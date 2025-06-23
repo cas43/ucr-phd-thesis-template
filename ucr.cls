@@ -476,8 +476,7 @@
 {\fmfont
 \ssp
 Copyright by\par
-\@author\par
-\@degreeyear}
+\@author}
 \ssp\end{center}
 \end{alwayssingle}}
 
@@ -497,6 +496,9 @@ Copyright by\par
 \thispagestyle{empty}
 \null\vfill
 
+\begin{center}
+{\ssp\fmfont\@degreeyear\ssp}
+\end{center}
 \fmfont The Dissertation of {\@author} is approved: \\
 \begin{center}
 \vspace{.25in}
@@ -506,9 +508,9 @@ Copyright by\par
 $\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{4.25in}  }}\:$ \\
 \vspace{\@approvalspace}
 \ifnum \@numberofmembers = 3
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.5in} Committee Co-Chairperson }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{4.25in}  }}\:$ \\
 \vspace{\@approvalspace}
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.5in} Committee Co-Chairperson }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.75in} Committee Chairperson }}\:$ \\
 \vspace{\@approvalspace}
 \fi
 \ifnum \@numberofmembers = 4
