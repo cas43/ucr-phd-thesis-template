@@ -3,6 +3,13 @@
 %%
 %% ucr.cls
 %% Rewritten by Charles Yang at UC Riverside, 08/01/2007
+%% 
+%% ucr.cls
+%% Slightly modified for a dissertation committee with two chairpersons
+%% - Jason Wong at UC Riverside, 03/12/2009
+%%
+%% Slightly modified by Blake Pollard to actually doublespace 09/01/2017
+%%
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -105,26 +112,36 @@
 %%%			   that you can't use \pagestyle{headings}
 %%%			   and \markboth if you use \part.  The solution
 %%%			   is to get the headerfooter style, which is
-%%%			   nice and simple to use."
+%%%	   	           nice and simple to use."
+%%%
+%%%			   I commented out the definition of \dsp using
+%%%                          1.37 instead of 2 and moved the other \dsp
+%%%			   definition and command inside the initialization. - Blake Pollard (2017)
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
 %%%  }
 %%% ====================================================================
 \usepackage{anysize}
 \usepackage[left=1.5in,top=1.5in,right=1in,bottom=1in]{geometry}
 % \usepackage{bm}
 % \usepackage{mathrsfs}
-% \usepackage[dvips]{graphicx}
+\usepackage[dvips]{graphicx}
 % \usepackage{graphics}
 % \usepackage{subfigure}
 % \usepackage{flafter}
 % \usepackage{sw20uctd}
 \usepackage{xspace}
-\usepackage{graphicx}
+% \usepackage{graphicx}
 \usepackage{pdfsync}
 \usepackage{amsmath}
 % \usepackage{amssymb}
 % \usepackage{amsthm}
 % \usepackage{fancyhdr} 
-\usepackage{fncylab}
+%% \usepackage{fncylab}
 \usepackage[usenames]{color}
 % \usepackage{enumerate}
 % \usepackage{multirow}
@@ -171,8 +188,6 @@
 %% tcilatex is a package from Scientific Workplace.
 %% The user may remove the following line without serious damage.
 %% \input{tcilatex}
-
-
 
 \NeedsTeXFormat{LaTeX2e}
 %\ProvidesClass{ucthesis}[2004/12/19 v3.2 University of California Thesis Class]
@@ -338,6 +353,7 @@
 
 % The name of your committee's chair
 \def\chair#1{\gdef\@chair{#1}}
+\def\chairtwo#1{\gdef\@chairtwo{#1}}
 
 % The names of your other committe members, one per line
 \def\othermembers#1{\gdef\@othermembers{#1}}
@@ -431,8 +447,8 @@
 \fmsmallfont
   Dissertation Committee:
 \begin{quote}
-\vspace{-.5cm} % Adjusted the extra space on page 1. Change this parameter as desired (e.g., -.4cm) H. Muttram 2024
 {\@chair}, Chairperson\newline
+% {\@chairtwo}, Co-Chairperson\newline
 {\@othermembers}
 \end{quote}
 %  \begin{center}
@@ -481,25 +497,26 @@ Copyright by\par
 \thispagestyle{empty}
 \null\vfill
 
-% Note that sometimes the signature lines get weird when the number of members is changed. Mess with these parameters to make the lines even. H Muttram 2024
 \fmfont The Dissertation of {\@author} is approved: \\
 \begin{center}
 \vspace{.25in}
 \vspace{\@approvalspace}
 % $\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small Chair%
 % \hspace{3.15in} Date }}\:$ \\
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in}  }}\:$ \\
-\vspace{\@approvalspace}
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in}  }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{4.25in}  }}\:$ \\
 \vspace{\@approvalspace}
 \ifnum \@numberofmembers = 3
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.03in} Committee Chairperson }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.5in} Committee Co-Chairperson }}\:$ \\
+\vspace{\@approvalspace}
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.5in} Committee Co-Chairperson }}\:$ \\
 \vspace{\@approvalspace}
 \fi
 \ifnum \@numberofmembers = 4
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in}  }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{4.25in}  }}\:$ \\
 \vspace{\@approvalspace}
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.03in} Committee Chairperson }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{4.25in}  }}\:$ \\
+\vspace{\@approvalspace}
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.75in} Committee Chairperson }}\:$ \\
 \vspace{\@approvalspace}
 \fi
 \ifnum \@numberofmembers = 5
@@ -507,7 +524,9 @@ $\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in}  }}\:$ \\
 \vspace{\@approvalspace}
 $\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{3.5in}  }}\:$ \\
 \vspace{\@approvalspace}
-$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.03in} Committee Chairperson }}\:$ \\
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.5in} Committee Co-Chairperson }}\:$ \\
+\vspace{\@approvalspace}
+$\:\overline{~~~~ \mbox{\rule{0in}{0.16in}\small ~\hspace{2.5in} Committee Co-Chairperson }}\:$ \\
 \vspace{\@approvalspace}
 \fi
 {\fmfont University of California, {\@campus}} \\
@@ -570,7 +589,9 @@ by\par
 \vspace{.25in}
 {\@degree}, Graduate Program in \@field\par
 University of California, {\@campus}, {\@degreemonth} {\@degreeyear}\par
-{\@chair}, Chairperson}
+{\@chair}, Chairperson\par
+% {\@chairtwo}, Co-Chairperson
+}
 \vspace{.25in}
 \ssp\end{center}}
 
@@ -584,6 +605,7 @@ University of California, {\@campus}, {\@degreemonth} {\@degreeyear}\par
 \vspace{1.7cm}
 \rule{3.2in}{.5pt}\\
 \@chair\\
+% \@chairtwo\\
 Dissertation Committee Chair
 \end{minipage}}
 
@@ -925,30 +947,26 @@ Dissertation Committee Chair
 %  In ucthesis style, \tableofcontents, \listoffigures, etc. are always
 %  set in single-column style.  @restonecol
 
-% Changed this a bit to put a blank line between each entry. H Muttram 2024
-
 \def\tableofcontents{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\contentsname
         \@mkboth{\uppercase{\contentsname}}{\uppercase{\contentsname}}}%
-  {\doublespacing\@starttoc{toc}}
-  \if@restonecol\twocolumn\fi}
+  {\ssp\@starttoc{toc}}\if@restonecol\twocolumn\fi}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
    \addvspace{2.25em plus\p@}% space above part line
    \begingroup
-   \doublespacing
-   \@tempdima 3em         % width of box holding part number
-     \parindent \z@ \rightskip \@pnumwidth
+   \@tempdima 3em         % width of box holding part number, used by
+     \parindent \z@ \rightskip \@pnumwidth             %% \numberline
      \parfillskip -\@pnumwidth
-     {\large \bfseries
-     \leavevmode
+     {\large \bfseries          % set line in \large boldface
+     \leavevmode          % TeX command to enter horizontal mode.
      #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
-     \nobreak
-    \global\@nobreaktrue
-    \everypar{\global\@nobreakfalse\everypar{}}
+     \nobreak             % Never break after part entry
+    \global\@nobreaktrue                        %% Added 24 May 89 as
+    \everypar{\global\@nobreakfalse\everypar{}}%% suggested by
+                                               %% Jerry Leichter
    \endgroup}
-
 
 %% First line of l@chapter changed 24 May 89, as suggested
 %% by Jerry Leichter.
@@ -973,29 +991,33 @@ Dissertation Committee Chair
 \def\l@paragraph{\@dottedtocline{4}{10em}{5em}}
 \def\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
 
-% Changed the list of figures and tables so that there is a line between each entry. H Muttram 2024
-
 % LIST OF FIGURES
 %
 % Single-space list of figures, add it to the table of contents.
 \def\listoffigures{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\listfigurename\@mkboth{\uppercase{\listfigurename}}%
-  {\uppercase{\listfigurename}}}
+{\uppercase{\listfigurename}}}
    \addcontentsline{toc}{chapter}{\listfigurename}
-   {\doublespacing\@starttoc{lof}}\if@restonecol
+   {\ssp\@starttoc{lof}}\if@restonecol
     \twocolumn\fi}
+
+\def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
 
 % LIST OF TABLES
 %
 \def\listoftables{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-  {\uppercase{\listtablename}}}
-  \addcontentsline{toc}{chapter}{\listtablename}
-  {\doublespacing\@starttoc{lot}}
-  \if@restonecol\twocolumn\fi}
-
+   {\uppercase{\listtablename}}}\@starttoc{lot}\if@restonecol
+  \twocolumn\fi}
+\def\listoftables{\@restonecolfalse
+  \if@twocolumn\@restonecoltrue\onecolumn\fi
+  \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
+{\uppercase{\listtablename}}}
+   \addcontentsline{toc}{chapter}{\listtablename}
+   {\ssp\@starttoc{lot}}\if@restonecol
+  \twocolumn\fi}
 
 
 \let\l@table\l@figure
